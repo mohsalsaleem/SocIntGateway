@@ -1,0 +1,40 @@
+#-------------------------------------------------------------------------------
+# Note for using the rate-limiting:
+#   The comment part won't be copied if you use the subgenerator docker-compose
+#   you have to manually copy it
+#-------------------------------------------------------------------------------
+version: '2'
+services:
+    socintgateway-app:
+        image: socintgateway
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+            - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+            - SPRING_DATA_MONGODB_URI=mongodb://socintgateway-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=SocIntGateway
+            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=socintgateway-cassandra
+            - JHIPSTER_SLEEP=30 # gives time for the Cassandra cluster to start and execute the migration scripts
+        ports:
+            - 8082:8082
+    socintgateway-mongodb:
+        extends:
+            file: mongodb.yml
+            service: socintgateway-mongodb
+    # Uncomment to have Cassandra working with the gateway
+    # socintgateway-cassandra:
+    #     extends:
+    #         file: cassandra-cluster.yml
+    #         service: socintgateway-cassandra
+    # socintgateway-cassandra-migration:
+    #     extends:
+    #         file: cassandra-migration.yml
+    #         service: socintgateway-cassandra-migration
+    #     environment:
+    #         - CREATE_KEYSPACE_SCRIPT=create-keyspace-prod.cql
+    jhipster-registry:
+        extends:
+            file: jhipster-registry.yml
+            service: jhipster-registry
+        environment:
+            - SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS=file:./central-config/docker-config/
