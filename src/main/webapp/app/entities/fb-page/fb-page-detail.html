@@ -1,0 +1,63 @@
+
+<div>
+    <h2><span>Fb Page</span> {{vm.fbPage.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Fb Name</span></dt>
+        <dd>
+            <span>{{vm.fbPage.fbName}}</span>
+        </dd>
+        <dt><span>Fb ID</span></dt>
+        <dd>
+            <span>{{vm.fbPage.fbID}}</span>
+        </dd>
+        <dt><span>Access Token</span></dt>
+        <dd>
+            <span>{{vm.fbPage.accessToken}}</span>
+        </dd>
+        <dt><span>Category</span></dt>
+        <dd>
+            <span>{{vm.fbPage.category}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.fbPage.description}}</span>
+        </dd>
+        <dt><span>Is Published</span></dt>
+        <dd>
+            <span>{{vm.fbPage.isPublished}}</span>
+        </dd>
+        <dt><span>Link</span></dt>
+        <dd>
+            <span>{{vm.fbPage.link}}</span>
+        </dd>
+        <dt><span>User Name</span></dt>
+        <dd>
+            <span>{{vm.fbPage.userName}}</span>
+        </dd>
+        <dt><span>Created At</span></dt>
+        <dd>
+            <span>{{vm.fbPage.createdAt | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Updated At</span></dt>
+        <dd>
+            <span>{{vm.fbPage.updatedAt | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Cover</span></dt>
+        <dd>
+            <a ui-sref="cover-detail({id:vm.fbPage.coverId})">{{vm.fbPage.coverId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="fb-page-detail.edit({id:vm.fbPage.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,7 +1,8 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.socint.gateway"
+      "packageName": "com.socint.gateway",
+      "microservicePath": "../SocIntFacebookService"
     },
     "jhipsterVersion": "4.3.0",
     "baseName": "SocIntGateway",

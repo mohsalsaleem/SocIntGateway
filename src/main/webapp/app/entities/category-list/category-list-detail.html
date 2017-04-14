@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Category List</span> {{vm.categoryList.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Fb Id</span></dt>
+        <dd>
+            <span>{{vm.categoryList.fbId}}</span>
+        </dd>
+        <dt><span>Category</span></dt>
+        <dd>
+            <span>{{vm.categoryList.category}}</span>
+        </dd>
+        <dt><span>Fb Page</span></dt>
+        <dd>
+            <a ui-sref="fb-page-detail({id:vm.categoryList.fbPageId})">{{vm.categoryList.fbPageId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="category-list-detail.edit({id:vm.categoryList.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
